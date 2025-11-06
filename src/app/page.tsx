@@ -149,8 +149,8 @@ const HeroSection = () => {
       >
         <source src='/videos/hero.mp4' type='video/mp4' />
       </video>
-
-      <div className='absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/20 to-transparent pointer-events-none' />
+      {/* Gradient overlay - bg-gradient-to-b from-black/60 via-black/20 to-transparent */}
+      <div className='absolute inset-0 z-10 bg-black/60' />
 
       <div className='absolute inset-0 z-20 flex items-center justify-center'>
         <div className='text-center px-4 w-full'>
