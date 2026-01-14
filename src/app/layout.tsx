@@ -1,21 +1,34 @@
 import type { Metadata } from 'next';
-import { Bricolage_Grotesque, Geist, Geist_Mono } from 'next/font/google';
+import {
+  Poppins,
+  Allison,
+  Playfair_Display,
+  Montserrat,
+} from 'next/font/google';
 import './globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
-
-const fontBricolageGrotesque = Bricolage_Grotesque({
+const poppins = Poppins({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-bricolage-grotesque',
+  variable: '--font-poppins',
+});
+
+const allison = Allison({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-allison',
+});
+
+const playfair_display = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-playfair-display',
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-montserrat',
 });
 
 export const metadata: Metadata = {
@@ -31,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${fontBricolageGrotesque.variable} antialiased`}
+        className={`${poppins.variable} ${allison.variable} ${playfair_display.variable} ${montserrat.variable} antialiased`}
       >
         {children}
       </body>

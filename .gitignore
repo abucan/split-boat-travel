@@ -17,6 +17,10 @@
 /.next/
 /out/
 
+# videos
+public/test.mp4
+public/hero.mp4
+
 # production
 /build
 

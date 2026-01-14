@@ -1,90 +1,85 @@
-'use client';
+import { Button } from '@/components/ui/button';
 import {
-  Navbar,
-  NavbarLogo,
-  NavItems,
-  NavbarButton,
-  NavBody,
-  MobileNav,
-  MobileNavHeader,
-  MobileNavToggle,
-  MobileNavMenu,
-} from '@/components/ui/resizable-navbar';
-import { useState } from 'react';
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from '@/components/ui/navigation-menu';
+import { PhoneIcon } from 'lucide-react';
+import { div } from 'motion/react-client';
+import Image from 'next/image';
 
+import {
+  VideoPlayer,
+  VideoPlayerContent,
+  VideoPlayerControlBar,
+  VideoPlayerMuteButton,
+  VideoPlayerPlayButton,
+  VideoPlayerSeekBackwardButton,
+  VideoPlayerSeekForwardButton,
+  VideoPlayerTimeDisplay,
+  VideoPlayerTimeRange,
+  VideoPlayerVolumeRange,
+} from '@/components/ui/shadcn-io/video-player';
+
+// home,trips,transfers,our fleet, meeeting point, reviews, contact us
 const navItems = [
   {
-    name: 'Features',
-    link: '#features',
+    name: 'Home',
+    link: '/',
   },
   {
-    name: 'Pricing',
-    link: '#pricing',
+    name: 'Trips',
+    link: '/trips',
   },
   {
-    name: 'Contact',
-    link: '#contact',
+    name: 'Transfers',
+    link: '/transfers',
+  },
+  {
+    name: 'Our Fleet',
+    link: '/our-fleet',
+  },
+  {
+    name: 'Meeting Point',
+    link: '/meeting-point',
+  },
+  {
+    name: 'Reviews',
+    link: '/reviews',
+  },
+  {
+    name: 'Get in Touch',
+    link: '/get-in-touch',
   },
 ];
-
 export default function Home() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   return (
-    <div className='relative w-full'>
-      <Navbar>
-        {/* Desktop Navigation */}
-        <NavBody>
-          <NavbarLogo />
-          <NavItems items={navItems} />
-          <div className='flex items-center gap-4'>
-            <NavbarButton variant='secondary'>Login</NavbarButton>
-            <NavbarButton variant='primary'>Book a call</NavbarButton>
-          </div>
-        </NavBody>
-        {/* Mobile Navigation */}
-        <MobileNav>
-          <MobileNavHeader>
-            <NavbarLogo />
-            <MobileNavToggle
-              isOpen={isMobileMenuOpen}
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            />
-          </MobileNavHeader>
-
-          <MobileNavMenu
-            isOpen={isMobileMenuOpen}
-            onClose={() => setIsMobileMenuOpen(false)}
-          >
-            {navItems.map((item, idx) => (
-              <a
-                key={`mobile-link-${idx}`}
-                href={item.link}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className='relative text-neutral-600 dark:text-neutral-300'
-              >
-                <span className='block'>{item.name}</span>
-              </a>
-            ))}
-            <div className='flex w-full flex-col gap-4'>
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant='primary'
-                className='w-full'
-              >
-                Login
-              </NavbarButton>
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant='primary'
-                className='w-full'
-              >
-                Book a call
-              </NavbarButton>
-            </div>
-          </MobileNavMenu>
-        </MobileNav>
-      </Navbar>
+    <div className='flex flex-col items-start h-screen mx-auto py-4 px-2'>
+      <div className='flex items-center justify-between w-full pb-4'>
+        <Image
+          src='/logo.webp'
+          alt='logo'
+          width={120}
+          height={0}
+          className='object-contain'
+        />
+      </div>
+      <VideoPlayer className='overflow-hidden rounded'>
+        <VideoPlayerContent
+          crossOrigin=''
+          muted
+          autoPlay
+          loop
+          preload='auto'
+          slot='media'
+          src='/hero.mp4'
+        />
+      </VideoPlayer>
     </div>
   );
 }
